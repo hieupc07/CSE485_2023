@@ -1,7 +1,3 @@
--- Ràng buộc khóa ngoại trên bảng baiviet
-ALTER TABLE baiviet ADD CONSTRAINT FK_ma_tloai FOREIGN KEY (ma_tloai) REFERENCES theloai(ma_tloai);
-ALTER TABLE baiviet ADD CONSTRAINT FK_ma_tgia FOREIGN KEY (ma_tgia) REFERENCES tacgia(ma_tgia);
-
 --Liệt kê các bài viết thuộc thể loại chữ tình
 SELECT * FROM baiviet
 WHERE ma_tloai = (SELECT ma_tloai FROM theloai WHERE ten_tloai = 'Nhạc trữ tình');
@@ -73,7 +69,8 @@ BEGIN
     WHERE ma_tloai = NEW.ma_tloai;
 END //
 DELIMITER ;
---Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng Đăng nhập/Quản trị trang web
+
+--Bổ sung thêm bảng Users để lưu thông tin Tài khoản đăng nhập và sử dụng cho chức năng Đăng nhập/Quản trị trang web
 CREATE TABLE users (
     user_id INT UNSIGNED NOT NULL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
